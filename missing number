@@ -1,0 +1,92 @@
+problem:Ritu has all numbers from 1 to n in an array arr of length n-1 except one number. You have to find which number, Ritu doesn't have from 1 to n.
+
+NOTE: Don't use Sorting
+
+Example 1:
+
+Input:
+n  =  4                                        
+arr = {1, 4, 3}
+Output: 2     
+Explanation:
+Ritu doesn't have number 2
+Example 2:
+
+Input:                        
+n = 5
+arr = {2, 5, 3, 1}
+Output: 4
+Explanation:
+Ritu doesn't have number 4 in her collection
+solution://{ Driver Code Starts
+import java.io.*;
+import java.util.*;
+
+
+class IntArray
+{
+    public static int[] input(BufferedReader br, int n) throws IOException
+    {
+        String[] s = br.readLine().trim().split(" ");
+        int[] a = new int[n];
+        for(int i = 0; i < n; i++)
+            a[i] = Integer.parseInt(s[i]);
+
+        return a;
+    }
+
+    public static void print(int[] a)
+    {
+        for(int e : a)
+            System.out.print(e + " ");
+        System.out.println();
+    }
+
+    public static void print(ArrayList<Integer> a)
+    {
+        for(int e : a)
+            System.out.print(e + " ");
+        System.out.println();
+    }
+}
+
+class GFG {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t;
+        t = Integer.parseInt(br.readLine());
+        while(t-- > 0){
+            
+            int n;
+            n = Integer.parseInt(br.readLine());
+            
+            
+            int[] arr = IntArray.input(br, n-1);
+            
+            Solution obj = new Solution();
+            int res = obj.missingNumber(n, arr);
+            
+            System.out.println(res);
+            
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+
+class Solution {
+    public static int missingNumber(int n, int[] arr) {
+        int totalSum = (n * (n + 1)) / 2; // Sum of first n natural numbers
+        int arrSum = 0; // Sum of elements in the array
+        for (int num : arr) {
+            arrSum += num;
+        }
+        return totalSum - arrSum;
+    }
+
+        // code here
+    }
+
+        
